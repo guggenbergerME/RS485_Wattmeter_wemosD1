@@ -8,7 +8,7 @@ unsigned long previousMillis_mqttCHECK = 0; // Windstärke prüfen
 unsigned long interval_mqttCHECK = 500; 
 
 unsigned long previousMillis_RS485_auslesen = 0; // Windstärke prüfen
-unsigned long interval_RS485_auslesen = 1000; 
+unsigned long interval_RS485_auslesen = 2000; 
 
 /////////////////////////////////////////////////////////////////////////// RS485 - Variablen
 #define RX        D2    //Serial Receive pin
@@ -24,6 +24,7 @@ const char* kartenID = "24V_Weihnachten_Lichter";
 /////////////////////////////////////////////////////////////////////////// mqtt Client
 WiFiClient espClient;
 PubSubClient client(espClient);
+char buffer1[10];
 
 // Wifi Setup
 const char* ssid = "GuggenbergerLinux";
@@ -148,13 +149,17 @@ void RS485_auslesen(){
   RS485Serial.readBytes(Wattmeter_buf, 8);
 
   Serial.print("Wattausgabe");
-
   Serial.print(" -> ");
   Serial.print(Wattmeter_buf[5]);
   Serial.print(" Watt");
-
-
   Serial.println(); 
+
+  delay(150);
+
+  dtostrf(Wattmeter_buf[5],2, 1, buffer1); 
+  client.publish("Wattmeter/HA/L1", buffer1); 
+
+
 
 }
 
