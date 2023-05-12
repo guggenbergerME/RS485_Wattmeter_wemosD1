@@ -8,7 +8,7 @@ unsigned long previousMillis_mqttCHECK = 0; // Windstärke prüfen
 unsigned long interval_mqttCHECK = 500; 
 
 unsigned long previousMillis_RS485_auslesen = 0; // Windstärke prüfen
-unsigned long interval_RS485_auslesen = 2000; 
+unsigned long interval_RS485_auslesen = 1500; 
 
 /////////////////////////////////////////////////////////////////////////// RS485 - Variablen
 #define RX        D2    //Serial Receive pin
@@ -154,7 +154,7 @@ void RS485_auslesen(){
   Serial.print(" Watt");
   Serial.println(); 
 
-  delay(150);
+  delay(300);
 
   dtostrf(Wattmeter_buf[5],2, 1, buffer1); 
   client.publish("Wattmeter/HA/L1", buffer1); 
