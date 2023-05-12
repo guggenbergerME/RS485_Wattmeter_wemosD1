@@ -1,0 +1,3 @@
+https://www.mischianti.org/2020/05/11/interface-arduino-esp8266-esp32-rs-485/#Wiring_esp8266
+
+https://github.com/philippedc/Arduino-ESP8266-RS485-MODBUS-Anemometer/blob/master/test_anemometer_Arduino-V0.1.ino

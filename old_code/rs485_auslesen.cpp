@@ -20,10 +20,6 @@ void setup() {
   // Start the Modbus serial Port, for Wattmeter
   RS485Serial.begin(4800);   
   delay(1000);
-
-
-    //digitalWrite(RTS_pin, RS485Receive);      // Init Receive
-
 }
 
 void loop() {
@@ -33,7 +29,7 @@ void loop() {
   RS485Serial.write(Wattmeter_request, sizeof(Wattmeter_request));
   RS485Serial.flush();
   */
-  
+  digitalWrite(RTS_pin, RS485Receive);      // Init Receive
   byte Wattmeter_buf[8];
   RS485Serial.readBytes(Wattmeter_buf, 8);
 
@@ -46,7 +42,7 @@ void loop() {
   Serial.print(" ");
   }
   */
-
+ 
   Serial.print(" -> ");
   Serial.print(Wattmeter_buf[5]);
   Serial.print(" Watt");
