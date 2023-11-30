@@ -3,7 +3,7 @@
 #include <PubSubClient.h>  
 #include <ESP8266WiFi.h> 
 
-/////////////////////////////////////////////////////////////////////////// Schleifen verwalten
+/////////////////////////////////////////////////////////////////////////// Schleifen verwalten22
 unsigned long previousMillis_mqttCHECK = 0; // Windstärke prüfen
 unsigned long interval_mqttCHECK = 500; 
 
